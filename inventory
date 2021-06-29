@@ -1,8 +1,8 @@
 [local]
-test ansible_connection=local ansible_user=stagiaire
+test ansible_connection=local
 
 [project]
-debian ansible_host=poecdevops.grp1.dawan.training ansible_user=stagiaire
+debian ansible_host=poecdevops.grp1.dawan.training
 
 [charles]
 mydeby_charles ansible_host=192.168.100.3
