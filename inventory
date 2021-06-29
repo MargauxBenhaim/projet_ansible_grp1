@@ -5,14 +5,13 @@ test ansible_connection=local ansible_user=stagiaire
 debian ansible_host=poecdevops.grp1.dawan.training ansible_user=stagiaire
 
 [charles]
-mydeby ansible_host=192.168.100.3
+mydeby_charles ansible_host=192.168.100.3
 
 [anne]
-mydeby ansible_host=192.168.1.71
+mydeby_anne ansible_host=192.168.1.71
 
 [margaux]
-mydeby ansible_host=192.168.1.73
-
+mydeby_margaux ansible_host=192.168.1.73
 
 [david]
-mydeby ansible_host=192.168.0.39
+mydeby_david ansible_host=192.168.0.39

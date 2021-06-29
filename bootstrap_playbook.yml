@@ -1,0 +1,43 @@
+# Déclarer un play
+# qui s'adresse au groupe nodes
+# qui déclare une task pour appeler le module ansible.builtin.user aves les paramètres :
+  # - name: ansible
+  #  - membre du groupe sudo
+  #  - shell /bin/bash
+
+# Déclencher le playbook :
+# ansible-playbook premier_playbook.yml -b --ask-become-pass
+---
+- name: PLAY creation utilisateur
+#variabilisation  de la valeur hosts (pattern)
+  hosts: "{{ cible | default('all') }}"
+  become: true
+
+  tasks:
+# Declaration d'une task qui appelle le module user afin de disposer d'un user ansible.
+      - name: Utilisation du module user pour creer ansible
+        ansible.builtin.user:
+          name: ansible
+          #utilisation d'une variable pour permettre une distinction du groupe désiré
+          groups: sudo
+          shell: /bin/bash
+
+# Declaration d'une seconde task
+      - name: Set authorized key taken from file
+        ansible.posix.authorized_key:
+          user: ansible
+          state: present
+          key: "{{ lookup('file', '/home/stagiaire/.ssh/id_ed25519.pub') }}"
+
+# Declaration d'une troisieme task pour générer un fichier de config sudo dédié au user ansible
+      - name: create config file with sudo right for ansible user
+        ansible.builtin.copy:
+          dest: '/etc/sudoers.d/ansible'
+          content: 'ansible ALL=(ALL:ALL) NOPASSWD: ALL'
+          backup: yes
+          owner: root
+          group: root
+          mode: 0440
+          validate: /usr/sbin/visudo -csf %s
+        
+...
