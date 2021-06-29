@@ -1,0 +1,8 @@
+---
+- name: Play role-docker
+  hosts: local
+
+  roles:
+    - role: ansible-role-docker__3.1.2
+      become: yes
+...
