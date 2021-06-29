@@ -1,6 +1,6 @@
 ---
 - name: Play role-docker
-  hosts: local
+  hosts: "{{ cible | default('all') }}"
 
   roles:
     - role: ansible-role-docker__3.1.2
