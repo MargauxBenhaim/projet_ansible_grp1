@@ -8,7 +8,7 @@ debian ansible_host=poecdevops.grp1.dawan.training ansible_user=stagiaire
 mydeby ansible_host=192.168.100.3
 
 [anne]
-mydeby ansible_host=192.168.1.171
+mydeby ansible_host=192.168.1.71
 
 [margaux]
 mydeby ansible_host=192.168.1.73
