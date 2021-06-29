@@ -1,0 +1,9 @@
+---
+- name: Deploiement micro service worpress docker
+  hosts: "{{ cible | default('all') }}"
+  become: true
+  tasks:
+    - name: Appel git
+      ansible.builtin.git:
+        dest: ./projet_worpress
+        repo: https://github.com/MargauxBenhaim/projet_docker_grp1.git
